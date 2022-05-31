@@ -7,17 +7,17 @@ app.use(bodyParser.json());
 const noticias = [
   {
     id: '1',
-    titulo: 'Titulo da noticia',
-    texto: 'Texto da noticia',
-    autor: 'Autor da noticia',
-    data: '01/01/2020'
+    titulo: 'Cão comeu o gato',
+    texto: 'Numa noite escura, o cachorro Tob matou e devorou o gato Miau',
+    autor: 'Anônimo',
+    data: '20/05/2022'
 },
 {
     id: '2',
-    titulo: 'Titulo da noticia 2',
-    texto: 'Texto da noticia 2',
-    autor: 'Autor da noticia 2',
-    data: '10/01/2020'
+    titulo: 'Gato se vinga',
+    texto: 'Num dia escuro, o gato Miau se vingou do pai do cão Tob',
+    autor: 'Anônimo',
+    data: '20/05/2022'
 }
 ]
 
@@ -36,7 +36,7 @@ app.post('api/noticias', (req, res, next) => {
 
 app.use('/api/noticias', (req, res, next) => {
   res.status(200).json({
-    mensagem: 'Tudo OK',
+    status: 'OK',
     noticias: noticias
   });
 });
