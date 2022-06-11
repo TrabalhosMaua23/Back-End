@@ -20,11 +20,13 @@ app.get('/api/noticias', (req, res) => {
 
 
 app.post('/api/noticias', (req, res) => {
+    console.log("post")
     contador++;
     const { titulo, texto, autor, data } = req.body;
     noticias.push ({
         contador, texto, titulo, autor, data
     });
+    console.log(noticias)
     res.status(200).json({noticias});
 });
 
