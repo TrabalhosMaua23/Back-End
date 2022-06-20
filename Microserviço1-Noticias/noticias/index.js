@@ -47,7 +47,7 @@ app.post('/api/noticias', (req, res, next) => {
     // })
     noti.save().then(notiInserido => {
       res.status(201).json({
-        mensagem: 'Cliente inserido',
+        mensagem: 'noticia inserida',
         id: notiInserido._id
       });
     })
