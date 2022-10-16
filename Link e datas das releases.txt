@@ -1,8 +1,20 @@
 
-1)Release dia 17/05
+1) Release dia 17/05 - OK
 https://github.com/TrabalhoECM252/Back-End/releases
-2)Release dia 30/05
+
+2) Release dia 30/05 - OK
 https://github.com/TrabalhoECM252/Front-End/releases
-3)Release dia 20/06
+
+3) Release dia 20/06 - OK
 https://github.com/TrabalhoECM252/Front-End/releases
 https://github.com/TrabalhoECM252/Back-End/releases
+
+4) Release dia 16/10 - OK
+
+5) Release dia 30/10
+
+6) Release dia 13/11
+
+7) Release dia 27/11
+
+8) Release dia 11/12
