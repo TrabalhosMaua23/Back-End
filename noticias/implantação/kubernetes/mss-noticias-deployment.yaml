@@ -1,0 +1,46 @@
+#deployments vem de apps/v1
+apiVersion: apps/v1
+#tipo
+kind: Deployment
+metadata:
+  #nome do deployment
+  name: mss-noticias-deployment
+spec:
+  #quantas cópias
+  replicas: 1
+  #para especificar o rótulo
+  selector:
+    matchLabels:
+      #rótulo, app não tem nada de especial, pode ser qualquer coisa
+      #Deployment vai selecionar todo Pod qe tiver esse rótulo
+      app: mss-noticias
+  #modelo que vai ser usado para construção dos Pods
+  template:
+    metadata:
+      labels:
+        #os Pods terão esse rótulo, assim, serão selecionados por esse deployment
+        app: mss-noticias
+    spec:
+      containers:
+        - name: mss-noticias
+          image: matheusgalbiati/mss-noticias
+          resources:
+            limits:
+              memory: 256Mi
+              cpu: 1
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mss-noticias-clusterip-service
+spec:
+  selector:
+    # todo Pod que tiver essa tag fará parte desse serviço
+    app: mss-noticias
+  ports:
+    - name: mss-noticias
+      protocol: TCP
+      # o nó recebe requisições nessa porta
+      port: 3000
+      # e direciona para essa porta do Pod
+      targetPort: 3000
