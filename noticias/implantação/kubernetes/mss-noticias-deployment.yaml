@@ -23,7 +23,7 @@ spec:
     spec:
       containers:
         - name: mss-noticias
-          image: matheusgalbiati/mss-noticias
+          image: guisamuka/mss-noticias
           resources:
             limits:
               memory: 256Mi
@@ -34,6 +34,7 @@ kind: Service
 metadata:
   name: mss-noticias-clusterip-service
 spec:
+  type: NodePort
   selector:
     # todo Pod que tiver essa tag fará parte desse serviço
     app: mss-noticias
