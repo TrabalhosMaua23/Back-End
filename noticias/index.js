@@ -8,9 +8,6 @@ const mongoose = require ('mongoose')
 app.use(bodyParser.json());
 const noticias = [];
 contador = 0;
-const cors = require("cors");
-const { model } = require('mongoose');
-app.use(cors());
 
 const {
     MONGODB_USER,
@@ -28,7 +25,7 @@ mongoose.connect(`mongodb+srv://${MONGODB_USER}:${MONGODB_PASSWORD}@${MONGODB_CL
     console.log("Conexão NOK: " + e)
   })
 
-  app.get('/api/noticias', (req, res, next) => {
+  app.get('http://mss-noticias-clusterip-service:3000/api/noticias', (req, res, next) => {
     Noticia.find().then((documents) => {
       res.status(200).json({
         mensagem: 'Tudo OK',
@@ -38,23 +35,21 @@ mongoose.connect(`mongodb+srv://${MONGODB_USER}:${MONGODB_PASSWORD}@${MONGODB_CL
   });
 
 
-app.post('/api/noticias', (req, res, next) => {
-    const noti = new Noticia (req.body)
+app.post('http://mss-noticias-clusterip-service:3000/api/noticias', (req, res, next) => {
+    const noticia = new Noticia (req.body)
 
     // const cliente = new Cliente({
     //   nome: req.body.nome,
     //   fone: req.body.fone,
     //   email: req.body.email
     // })
-    noti.save().then(notiInserido => {
+    noticia.save().then(notiInserido => {
       res.status(201).json({
         mensagem: 'noticia inserida',
         id: notiInserido._id
       });
     })
   });
-  
-
 
 
 app.listen(3000, () => {
